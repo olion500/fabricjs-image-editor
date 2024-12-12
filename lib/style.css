@@ -371,3 +371,13 @@ body {
   cursor: default;
   color: #888;
 }
+
+#background-picture {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+}
