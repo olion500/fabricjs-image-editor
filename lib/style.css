@@ -47,7 +47,8 @@ body {
 }
 
 .main-panel {
-  height: calc(100% - 54px);
+  /* height: calc(100% - 54px); */
+  height: 65%;
   display: flex;
   position: relative;
 }
@@ -70,7 +71,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #eaeaea;
 }
 
 .canvas-container {
