@@ -13,6 +13,7 @@ RUN npm install
 
 # Copy app source
 COPY . /usr/share/nginx/html/
+COPY . .
 
 # Copy nginx config
 COPY nginx.conf /etc/nginx/conf.d/
