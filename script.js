@@ -13,7 +13,7 @@ try {
     // 'path',
     // 'background',
     // 'redo',
-    // 'save',
+    'save',
     // 'download',
     // 'clear'
   ];
@@ -29,9 +29,6 @@ try {
   var imgEditor = new ImageEditor('#image-editor-container', buttons, []);
   console.log('initialize image editor');
 
-  // let status = imgEditor.getCanvasJSON();
-  // imgEditor.setCanvasStatus(status);
-
   // Initialize the API and fetch data in an async function
   async function initBudibase() {
     const budibaseApi = new BudibaseAPI();
@@ -39,7 +36,7 @@ try {
     try {
       // Get product_no from URL query parameters
       const urlParams = new URLSearchParams(window.location.search);
-      const productNo = urlParams.get('product_no') || 35; // Default to 10 if not specified
+      const productNo = urlParams.get('product_no') || 35;
       
       // Search for product
       const searchResults = await budibaseApi.searchProducts(productNo);
@@ -53,9 +50,32 @@ try {
         if (canvasContainer && product.front && product.front.url) {
           canvasContainer.style.backgroundImage = `url('${product.front.url}')`;
           canvasContainer.classList.add('with-product-image');
+
+          img.onload = () => {
+            // Clear the canvas first
+            const canvas= document.querySelector('#c');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Calculate scaling to fit while maintaining aspect ratio
+            const scale = Math.min(
+              canvas.width / img.width,
+              canvas.height / img.height
+            );
+            
+            // Calculate centered position
+            const x = (canvas.width - img.width * scale) / 2;
+            const y = (canvas.height - img.height * scale) / 2;
+            
+            // Draw the image centered and scaled
+            ctx.drawImage(
+              img,
+              x, y,
+              img.width * scale,
+              img.height * scale
+            );
+          };
           
-          // Create an Image object to ensure the image is loaded
-          const img = new Image();
           img.src = product.front.url;
         }
       }

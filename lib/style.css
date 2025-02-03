@@ -91,6 +91,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   margin: auto;
+  position: relative;
 }
 
 .canvas-container.with-product-image {
