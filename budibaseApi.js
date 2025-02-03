@@ -61,7 +61,7 @@
             body: JSON.stringify({
               query: {
                 string: {
-                  product_no: productNo
+                  product_no: `${productNo}`
                 }
               }
             })
