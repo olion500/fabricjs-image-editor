@@ -87,9 +87,14 @@ body {
 }
 
 .canvas-container {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAHUlEQVQ4jWNgYGAQIYAJglEDhoUBg9+FowbQ2gAARjwKARjtnN8AAAAASUVORK5CYII=");
-  background-size: 30px 30px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   margin: auto;
+}
+
+.canvas-container.with-product-image {
+  background-image: none; /* This will be set dynamically */
 }
 
 .toolpanel {
@@ -392,35 +397,4 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   user-select: none;
-}
-
-/* Add these styles for the font style buttons */
-.text-section .style {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.text-section .style button {
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.text-section .style button:hover {
-  background: #f5f5f5;
-}
-
-.text-section .style button svg {
-  width: 20px;
-  height: 20px;
 }

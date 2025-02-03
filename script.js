@@ -32,6 +32,42 @@ try {
   // let status = imgEditor.getCanvasJSON();
   // imgEditor.setCanvasStatus(status);
 
+  // Initialize the API and fetch data in an async function
+  async function initBudibase() {
+    const budibaseApi = new BudibaseAPI();
+    
+    try {
+      // Get product_no from URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const productNo = urlParams.get('product_no') || 35; // Default to 10 if not specified
+      
+      // Search for product
+      const searchResults = await budibaseApi.searchProducts(productNo);
+      console.log('Search results:', searchResults);
+
+      // Set the background image if product data exists
+      if (searchResults.data && searchResults.data.length > 0) {
+        const product = searchResults.data[0];
+        const canvasContainer = document.querySelector('.canvas-container');
+        
+        if (canvasContainer && product.front && product.front.url) {
+          canvasContainer.style.backgroundImage = `url('${product.front.url}')`;
+          canvasContainer.classList.add('with-product-image');
+          
+          // Create an Image object to ensure the image is loaded
+          const img = new Image();
+          img.src = product.front.url;
+        }
+      }
+
+    } catch (error) {
+      console.error('Failed to interact with Budibase:', error);
+    }
+  }
+
+  // Call the async function
+  initBudibase();
+
 } catch (_) {
   const browserWarning = document.createElement('div')
   browserWarning.innerHTML = '<p style="line-height: 26px; margin-top: 100px; font-size: 16px; color: #555">Your browser is out of date!<br/>Please update to a modern browser, for example:<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>!</p>';
