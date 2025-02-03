@@ -2,19 +2,20 @@ try {
   // define toolbar buttons to show
   // if this value is undefined or its length is 0, default toolbar buttons will be shown
   const buttons = [
-    'select',
-    'shapes',
-    'draw',
-    'line',
-    'path',
+    'clear',
+    'color',
     'textbox',
+    'shapes',
     'upload',
-    'background',
-    'undo',
-    'redo',
-    'save',
-    'download',
-    'clear'
+    // 'select',
+    // 'draw',
+    // 'line',
+    // 'path',
+    // 'background',
+    // 'redo',
+    // 'save',
+    // 'download',
+    // 'clear'
   ];
 
   // define custom shapes
