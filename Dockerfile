@@ -1,5 +1,5 @@
 # Use Node.js with Nginx base image
-FROM node:18-slim
+FROM node:20-slim
 
 # Install nginx
 RUN apt-get update && apt-get install -y nginx
@@ -10,6 +10,8 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package*.json ./
 RUN npm install
+
+RUN rm /etc/nginx/sites-enabled/default
 
 # Copy app source
 COPY . /usr/share/nginx/html/
