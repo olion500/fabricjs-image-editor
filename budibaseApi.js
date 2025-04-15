@@ -8,13 +8,12 @@
    * Budibase API class
    */
   var BudibaseAPI = function () {
-    this.baseUrl = 'http://localhost:3000/api';
+    this.baseUrl = 'https://cors-anywhere.herokuapp.com/https://budibase.app/api/public/v1';
     this.appId = 'app_olion_4e90f836bd7e44d5896eed3a8c72efec';
     this.tableId = 'ta_7ad95a76724549559ba4408fceecf7d2';
+    this.apiKey = 'eb8720cd05afcc9418acfc3f5710b5fa-b80cdb8d6c925822935c963db8491f1aca170205a5b2576283eadbbe2f711a3f09025ca0b13c'
 
-    this.initialize = async () => {
-      this.apiKey = 'eb8720cd05afcc9418acfc3f5710b5fa-b80cdb8d6c925822935c963db8491f1aca170205a5b2576283eadbbe2f711a3f09025ca0b13c'
-    }
+    this.initialize = async () => {}
 
     /**
      * Fetch data from Budibase table
